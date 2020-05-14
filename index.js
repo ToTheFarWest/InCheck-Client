@@ -23,6 +23,7 @@ app.use('/', routers.home);
 app.use('/login', routers.login);
 app.use('/signup', routers.signup);
 app.use('/teams', routers.teams);
+app.use('/logout', routers.logout);
 
 
 //Start Server
