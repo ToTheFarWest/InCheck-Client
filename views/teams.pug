@@ -1,0 +1,9 @@
+extends layouts/main-layout.pug
+
+block content
+    h1 My Teams
+    //Loops through Teams object, creating hyperlink for each team
+    ul
+        each team in teams
+            li
+                a(href=`/teams/${team.id}`) #{team.name}

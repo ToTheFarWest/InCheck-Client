@@ -1,0 +1,12 @@
+extends layouts/main-layout.pug
+
+block content
+    h1 Log In
+    form(action='/login', method='POST')
+        div(class='text')
+            label(for='email') Email:
+            input(type="email", name='email', id='email')
+        div(class="text")
+            label(for="password") Password:
+            input(type="password", name="password", id='password')
+        input(type="submit", value="Log in")
