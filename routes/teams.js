@@ -26,6 +26,15 @@ router.get('/', auth, async (req, res) => {
 
 });
 
+router.post('/', auth, async (req, res) => {
+    try {
+        //TBD
+    } catch (err) {
+        console.error(err);
+        res.send("ERROR");
+    }
+});
+
 router.get('/create', auth, (req, res) => {
     res.render('createTeam');
 });
