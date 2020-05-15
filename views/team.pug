@@ -4,6 +4,12 @@ block content
     //- script(src="/sendMessage.js")
     h1 #{team.name}
     h2 Owner: #{team.leader.username}
+    h2 Members:
+    div(name='members')
+        ul
+            each member in team.members
+                li
+                    a(href=`/users/${member._id}`) #{member.username}
 
     h2 Messages
     div(name='messages')

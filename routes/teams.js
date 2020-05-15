@@ -26,6 +26,10 @@ router.get('/', auth, async (req, res) => {
 
 });
 
+router.get('/create', auth, (req, res) => {
+    res.render('createTeam');
+});
+
 router.get('/:id', auth, async (req, res) => {
     try{
         let path = `/teams/${req.params.id}`;
@@ -36,16 +40,22 @@ router.get('/:id', auth, async (req, res) => {
         result = await service.get(path, {headers: req.headers});
         const messages = result.data.messages;
 
-        messages.forEach(async message => {
-            // path = `/users/${message.author}`
-            // message.author.name = await service.get();
-            // console.log(message.author);
-        });
+        //Owner view check
+        path = `/users/me`;
+        result = await service.get(path, {headers: req.headers});
+        const user = result.data.user;
+
+        let isOwner = false;
+        if (user._id === team.owner)
+        {
+            isOwner = true;
+        }
 
         res.render('team', {
             title: team.name,
             team: team,
-            messages: messages
+            messages: messages,
+            isOwner: isOwner
         });
         // res.send(req.params.id);
     }
