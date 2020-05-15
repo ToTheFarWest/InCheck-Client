@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 5000;
 
 //Init app
 const app = express();
+app.use(express.static('public'));
 
 //Load View engine
 app.set('views', path.join(__dirname, 'views'));
@@ -17,6 +18,7 @@ app.set('view engine', 'pug');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
+
 
 //Bind routes
 app.use('/', routers.home);
